@@ -10,6 +10,10 @@ RUN apt update  && \
 RUN apt install -y wget \
     curl git nano zip
 
+# Libs
+RUN apt install -y libcurl4 libcurl4-openssl-dev libzip4 zip libzip-dev icu-devtools libicu67 libicu-dev libonig-dev
+    
+
 # Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
@@ -20,3 +24,17 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 # Install xdebug
 RUN pecl install xdebug-3.0.0 && \
     docker-php-ext-enable xdebug
+
+# PHP Extensions
+RUN docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install mysqli && \
+    docker-php-ext-install curl && \
+    docker-php-ext-install zip && \
+    docker-php-ext-install -j$(nproc) intl && \
+    docker-php-ext-install mbstring && \
+    docker-php-ext-install gettext && \
+    docker-php-ext-install calendar && \
+    docker-php-ext-install exif  
+
+# Cleanup
+RUN rm -rf /usr/src/*  
