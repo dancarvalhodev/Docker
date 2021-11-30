@@ -2,7 +2,7 @@ version: '3.9'
 services:
   apache:
     build: 
-      context: ./bin/apache
+      context: .
     container_name: 'apache'
     restart: 'always'
     ports:
@@ -12,14 +12,11 @@ services:
       - mysql
     volumes:
       - ./src:/var/www/html
-    # image: 
-    #   - httpd:latest
   mysql:
     build: 
       context: ./bin/mysql
     container_name: 'mysql'
-    image: 
-      - mysql:5.7.36
+    image: mysql:5.7.36
     command: --default-authentication-plugin=mysql_native_password
     restart: 'always'
     ports:
@@ -28,10 +25,8 @@ services:
       - ./bin/mysql/data/mysql:/var/lib/mysql
       - ./bin/mysql/logs/mysql:/var/log/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_DATABASE: docker
-      - MYSQL_USER: root
-      - MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: docker
 
     
     

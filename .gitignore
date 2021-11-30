@@ -1,0 +1,2 @@
+bin/mysql/data/*
+bin/mysql/logs/*
