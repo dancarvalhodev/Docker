@@ -12,6 +12,7 @@ services:
       - mysql
     volumes:
       - ./src:/var/www/html
+      - ./config/vhosts:/etc/apache2/sites-enabled
   mysql:
     container_name: 'mysql'
     image: mysql:5.7.36

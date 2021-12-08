@@ -38,3 +38,7 @@ RUN docker-php-ext-install pdo_mysql && \
 
 # Cleanup
 RUN rm -rf /usr/src/*  
+
+# Enable apache modules
+RUN a2enmod rewrite headers
+RUN a2enmod rewrite
