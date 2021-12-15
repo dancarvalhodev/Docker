@@ -14,6 +14,7 @@ services:
       - ./src:/var/www/html
       - ./config/vhosts:/etc/apache2/sites-enabled
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
+      - ./scripts/apache:/var/scripts
   postgresql:
     container_name: 'postgresql'
     image: postgres:latest
@@ -23,7 +24,7 @@ services:
     volumes:
       - ./bin/postgresql/data/postgresql:/var/lib/postgresql/data
       - ./data/database_dump:/var
-      - ./scripts:/var/scripts
+      - ./scripts/postgresql:/var/scripts
     environment:
       POSTGRES_PASSWORD: V@gas*14GoVagas
       POSTGRES_USER: govagas
