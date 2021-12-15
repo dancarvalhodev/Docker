@@ -11,3 +11,10 @@
 - MySQL 5.7.36
 - Apache
 - Built using Debian 11
+
+---
+
+# Tips
+## Give apache write permition and local user same permition
+`find /var/www -type d -exec chmod a+rwx,o-rwx,ug+s {} +` **(Inside Container)**
+`sudo chown -R dan:www-data src/` **(Into docker folder all data into src folder)**
