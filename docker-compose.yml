@@ -9,23 +9,35 @@ services:
       - 80:80
       - 443:443
     links:
-      - mysql
+      - postgresql
     volumes:
       - ./src:/var/www/html
       - ./config/vhosts:/etc/apache2/sites-enabled
-  mysql:
-    container_name: 'mysql'
-    image: mysql:5.7.36
-    command: --default-authentication-plugin=mysql_native_password
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
+  postgresql:
+    container_name: 'postgresql'
+    image: postgres:latest
     restart: 'always'
     ports:
-      - 3306:3306
+      - 5434:5434
     volumes:
-      - ./bin/mysql/data/mysql:/var/lib/mysql
-      - ./bin/mysql/logs/mysql:/var/log/mysql
+      - ./bin/postgresql/data/postgresql:/var/lib/postgresql/data
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: docker
+      POSTGRES_PASSWORD: V@gas*14GoVagas
+      POSTGRES_USER: govagas
+      POSTGRES_DB: govagas
+  pgadmin4:
+    container_name: 'pgadmin4'
+    image: dpage/pgadmin4:latest
+    restart: 'always'
+    links:
+      - postgresql
+    ports:
+      - 15432:15432
+    environment:
+      PGADMIN_DEFAULT_EMAIL: danielcarvalhodev@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_LISTEN_PORT: 15432
 
     
     
