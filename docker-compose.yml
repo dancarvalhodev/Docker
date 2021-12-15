@@ -23,6 +23,7 @@ services:
     volumes:
       - ./bin/postgresql/data/postgresql:/var/lib/postgresql/data
       - ./data/database_dump:/var
+      - ./scripts:/var/scripts
     environment:
       POSTGRES_PASSWORD: V@gas*14GoVagas
       POSTGRES_USER: govagas

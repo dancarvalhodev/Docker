@@ -6,3 +6,4 @@ data/lib/*
 data/run/*
 data/database_dump/back.dump
 data/database_dump/run
+scripts/*.sh
