@@ -29,7 +29,9 @@ RUN pecl install xdebug-3.0.0 && \
     docker-php-ext-enable xdebug
 
 # PHP Extensions
-RUN docker-php-ext-install pdo_pgsql && \
+RUN docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install mysqli && \
+    docker-php-ext-install pdo_pgsql && \
     docker-php-ext-install pgsql && \
     docker-php-ext-install curl && \
     docker-php-ext-install zip && \
