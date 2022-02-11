@@ -8,7 +8,7 @@ RUN apt update  && \
 
 # Install useful tools
 RUN apt install -y wget \
-    curl git nano zip
+    curl git nano zip npm
 
 # Libs
 RUN apt install -y libcurl4 libcurl4-openssl-dev libzip4 zip libzip-dev icu-devtools libicu67 libicu-dev libonig-dev libpq-dev curl ca-certificates gnupg wget
@@ -31,8 +31,6 @@ RUN pecl install xdebug-3.0.0 && \
 # PHP Extensions
 RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install mysqli && \
-    docker-php-ext-install pdo_pgsql && \
-    docker-php-ext-install pgsql && \
     docker-php-ext-install curl && \
     docker-php-ext-install zip && \
     docker-php-ext-install -j$(nproc) intl && \
