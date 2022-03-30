@@ -8,7 +8,7 @@ RUN apt update  && \
 
 # Install useful tools
 RUN apt install -y wget \
-    curl git nano zip npm
+    curl git nano zip
 
 # Libs
 RUN apt install -y libcurl4 libcurl4-openssl-dev libzip4 zip libzip-dev icu-devtools libicu67 libicu-dev libonig-dev libpq-dev curl ca-certificates gnupg wget
