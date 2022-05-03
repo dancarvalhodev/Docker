@@ -25,6 +25,7 @@ services:
     volumes:
       - ./bin/mysql/data/mysql:/var/lib/mysql
       - ./bin/mysql/logs/mysql:/var/log/mysql
+    user: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: docker
