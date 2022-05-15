@@ -9,3 +9,4 @@ data/database_dump/run
 scripts/postgresql/*.sh
 scripts/apache/*.sh
 .DS_Store
+.idea/*
